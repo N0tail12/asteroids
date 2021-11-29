@@ -101,26 +101,26 @@ function newAsteroid(x, y) {
   return asteroid;
 }
 
-function newShip(){
-    return {
-        x: canvas.width / 2,
-        y: canvas.height / 2,
-        r: SHIP_SIZE / 2,
-        a: (90 / 180) * Math.PI,
-        blinkTime: Math.ceil(SHIP_BLINK_DUR * FPS),
-        blinkNum: Math.ceil(SHIP_IDV_DUR /SHIP_BLINK_DUR),
-        explodeTime: 0,
-        rot: 0,
-        thrusting: false,
-        thrust: {
-          x: 0,
-          y: 0,
-        },
-      };
+function newShip() {
+  return {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    r: SHIP_SIZE / 2,
+    a: (90 / 180) * Math.PI,
+    blinkTime: Math.ceil(SHIP_BLINK_DUR * FPS),
+    blinkNum: Math.ceil(SHIP_IDV_DUR / SHIP_BLINK_DUR),
+    explodeTime: 0,
+    rot: 0,
+    thrusting: false,
+    thrust: {
+      x: 0,
+      y: 0,
+    },
+  };
 }
 
 function update() {
-    let blinkOn = ship.blinkNum % 2 == 0;
+  let blinkOn = ship.blinkNum % 2 == 0;
   let exploding = ship.explodeTime > 0;
   //draw space
   ctx.fillStyle = "black";
@@ -161,37 +161,37 @@ function update() {
   }
   //draw triangular ship
   if (!exploding) {
-      if(blinkOn){
-    ctx.strokeStyle = "white";
-    ctx.lineWidth = SHIP_SIZE / 20;
-    ctx.beginPath();
-    ctx.moveTo(
-      // nose of the ship
-      ship.x + (4 / 3) * ship.r * Math.cos(ship.a),
-      ship.y - (4 / 3) * ship.r * Math.sin(ship.a)
-    );
-    ctx.lineTo(
-      // rear left
-      ship.x - ship.r * ((2 / 3) * Math.cos(ship.a) + Math.sin(ship.a)),
-      ship.y + ship.r * ((2 / 3) * Math.sin(ship.a) - Math.cos(ship.a))
-    );
-    ctx.lineTo(
-      // rear right
-      ship.x - ship.r * ((2 / 3) * Math.cos(ship.a) - Math.sin(ship.a)),
-      ship.y + ship.r * ((2 / 3) * Math.sin(ship.a) + Math.cos(ship.a))
-    );
-    ctx.closePath();
-    ctx.stroke();
-      }
+    if (blinkOn) {
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = SHIP_SIZE / 20;
+      ctx.beginPath();
+      ctx.moveTo(
+        // nose of the ship
+        ship.x + (4 / 3) * ship.r * Math.cos(ship.a),
+        ship.y - (4 / 3) * ship.r * Math.sin(ship.a)
+      );
+      ctx.lineTo(
+        // rear left
+        ship.x - ship.r * ((2 / 3) * Math.cos(ship.a) + Math.sin(ship.a)),
+        ship.y + ship.r * ((2 / 3) * Math.sin(ship.a) - Math.cos(ship.a))
+      );
+      ctx.lineTo(
+        // rear right
+        ship.x - ship.r * ((2 / 3) * Math.cos(ship.a) - Math.sin(ship.a)),
+        ship.y + ship.r * ((2 / 3) * Math.sin(ship.a) + Math.cos(ship.a))
+      );
+      ctx.closePath();
+      ctx.stroke();
+    }
 
-//blinking
-      if(ship.blinkNum > 0){
-          ship.blinkTime--;
-          if(ship.blinkTime == 0){
-              ship.blinkTime = Math.ceil(SHIP_BLINK_DUR * FPS);
-              ship.blinkNum--;
-          } 
+    //blinking
+    if (ship.blinkNum > 0) {
+      ship.blinkTime--;
+      if (ship.blinkTime == 0) {
+        ship.blinkTime = Math.ceil(SHIP_BLINK_DUR * FPS);
+        ship.blinkNum--;
       }
+    }
   } else {
     // draw explode
     ctx.fillStyle = "darkred";
@@ -254,30 +254,30 @@ function update() {
   }
 
   // check for collisions
-if (!exploding) {
-    if(ship.blinkNum == 0){
-  for (let i = 0; i < asteroids.length; ++i) {
-    if (
-      distBetweenPoints(ship.x, ship.y, asteroids[i].x, asteroids[i].y) <
-      ship.r + asteroids[i].r
-    ) {
-      explodeShip();
+  if (!exploding) {
+    if (ship.blinkNum == 0) {
+      for (let i = 0; i < asteroids.length; ++i) {
+        if (
+          distBetweenPoints(ship.x, ship.y, asteroids[i].x, asteroids[i].y) <
+          ship.r + asteroids[i].r
+        ) {
+          explodeShip();
+        }
+      }
+    }
+
+    //rotate ship
+    ship.a += ship.rot;
+
+    //move the ship
+    ship.x += ship.thrust.x;
+    ship.y += ship.thrust.y;
+  } else {
+    ship.explodeTime--;
+    if (ship.explodeTime == 0) {
+      ship = newShip();
     }
   }
-}
-
-  //rotate ship
-  ship.a += ship.rot;
-
-  //move the ship
-  ship.x += ship.thrust.x;
-  ship.y += ship.thrust.y;
-}else{
-    ship.explodeTime--;
-    if(ship.explodeTime == 0){
-        ship = newShip();
-    }
-}
   // handle edge of screen
   if (ship.x < 0 - ship.r) {
     // if ship float to left edge
