@@ -110,7 +110,6 @@ function gameOVer() {
 
 function keyDown(/** @type {KeyboardEvent} */ ev) {
   if (ship.dead) {
-    console.log("?");
     return;
   }
   switch (ev.keyCode) {
@@ -432,7 +431,7 @@ function update() {
 
   // check for collisions
   if (!exploding) {
-    if (ship.blinkNum == 0) {
+    if (ship.blinkNum == 0 && !ship.dead) {
       for (let i = 0; i < asteroids.length; ++i) {
         if (
           distBetweenPoints(ship.x, ship.y, asteroids[i].x, asteroids[i].y) <
@@ -455,7 +454,7 @@ function update() {
     ship.explodeTime--;
     if (ship.explodeTime == 0) {
       lives--;
-      if (lives == 0) {
+      if (lives <= 0) {
         gameOVer();
       } else {
         ship = newShip();
