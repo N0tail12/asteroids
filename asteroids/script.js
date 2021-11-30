@@ -1,6 +1,9 @@
 const FPS = 30;
 const FRICTION = 0.6;
 const GAME_LIFE = 3;
+const LARGE_ASTEROIDS_POINT = 20;
+const MEDIUM_ASTEROIDS_POINT = 50;
+const SMALL_ASTEROIDS_POINT = 100;
 const LASER_MAX = 10; // 10 lasers
 const LASER_SPEED = 500; // 10 lasers
 const LASER_DIST = 0.5;
@@ -24,7 +27,7 @@ const TEXT_SIZE = 40; // text font
 var canvas = document.getElementById("gameCanvas");
 var ctx = canvas.getContext("2d");
 
-var level, asteroids, ship, text, textAlpha, lives;
+var level, asteroids, ship, text, textAlpha, lives, score, scoreHigh;
 newGame();
 
 // event handlers
@@ -58,10 +61,18 @@ function destroyAsteroids(index) {
   if (r == Math.ceil(ASTEROIDS_SIZE / 2)) {
     asteroids.push(newAsteroid(x, y, Math.ceil(ASTEROIDS_SIZE / 4)));
     asteroids.push(newAsteroid(x, y, Math.ceil(ASTEROIDS_SIZE / 4)));
+    score += LARGE_ASTEROIDS_POINT;
   } else if (r == Math.ceil(ASTEROIDS_SIZE / 4)) {
     asteroids.push(newAsteroid(x, y, Math.ceil(ASTEROIDS_SIZE / 8)));
     asteroids.push(newAsteroid(x, y, Math.ceil(ASTEROIDS_SIZE / 8)));
+    score += MEDIUM_ASTEROIDS_POINT;
+  } else {
+    score += SMALL_ASTEROIDS_POINT;
   }
+  if (score > scoreHigh) {
+    scoreHigh = score;
+  }
+
   asteroids.splice(index, 1);
 
   // new level
@@ -171,6 +182,8 @@ function newAsteroid(x, y, r) {
 }
 
 function newGame() {
+  scoreHigh = 100;
+  score = 0;
   level = 0;
   lives = GAME_LIFE;
   ship = newShip();
@@ -407,6 +420,20 @@ function update() {
       lifeColour
     );
   }
+
+  //draw the score
+  ctx.textAlign = "right";
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = "white";
+  ctx.font = TEXT_SIZE + "px dejavu sans mono";
+  ctx.fillText(score, canvas.width - SHIP_SIZE / 2, SHIP_SIZE);
+
+  //draw the high score
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = "white";
+  ctx.font = TEXT_SIZE * 0.75 + "px dejavu sans mono";
+  ctx.fillText("Best " + scoreHigh, canvas.width / 2, SHIP_SIZE);
 
   // detect laser hits
   var ax, ay, ar, lx, ly;
