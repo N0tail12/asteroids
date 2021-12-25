@@ -1,0 +1,27 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeDependentOption.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/WindowsPaths.cmake
+D:/Document/THLTmang/testlib/minimal-http-server-form-post/CMakeLists.txt
+D:/Document/THLTmang/testlib/minimal-http-server-form-post/build/CMakeFiles/3.22.0-rc3/CMakeCCompiler.cmake
+D:/Document/THLTmang/testlib/minimal-http-server-form-post/build/CMakeFiles/3.22.0-rc3/CMakeRCCompiler.cmake
+D:/Document/THLTmang/testlib/minimal-http-server-form-post/build/CMakeFiles/3.22.0-rc3/CMakeSystem.cmake
+D:/Document/THLTmang/vcpkg/installed/x86-windows/share/libwebsockets/LibwebsocketsTargets-debug.cmake
+D:/Document/THLTmang/vcpkg/installed/x86-windows/share/libwebsockets/LibwebsocketsTargets-release.cmake
+D:/Document/THLTmang/vcpkg/installed/x86-windows/share/libwebsockets/LibwebsocketsTargets.cmake
+D:/Document/THLTmang/vcpkg/installed/x86-windows/share/libwebsockets/LwsCheckRequirements.cmake
+D:/Document/THLTmang/vcpkg/installed/x86-windows/share/libwebsockets/libwebsockets-config-version.cmake
+D:/Document/THLTmang/vcpkg/installed/x86-windows/share/libwebsockets/libwebsockets-config.cmake
+D:/Document/THLTmang/vcpkg/scripts/buildsystems/vcpkg.cmake

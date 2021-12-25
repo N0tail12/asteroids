@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "libwebsockets.h": "c",
+        "string.h": "c",
+        "cstddef": "c"
+    }
+}

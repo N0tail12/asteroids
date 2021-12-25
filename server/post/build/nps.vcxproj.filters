@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Document\THLTmang\testlib\minimal-http-server-form-post\src\account.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Document\THLTmang\testlib\minimal-http-server-form-post\src\minimal-http-server-form-post.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Document\THLTmang\testlib\minimal-http-server-form-post\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{802F106E-2402-3E6B-AE48-8030E81C31D5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
