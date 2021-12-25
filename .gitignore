@@ -1,2 +1,2 @@
-build/
-include/
+/server/post/build/
+/server/post/include/
